@@ -1,0 +1,5 @@
+
+Duplicate entry '1' for key 'PRIMARY' in insertTransaction: 1
+Duplicate entry '1' for key 'PRIMARY' in insertTransaction: 1
+Duplicate entry '1' for key 'PRIMARY' in insertTransaction: 12
+3

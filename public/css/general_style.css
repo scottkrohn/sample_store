@@ -1,0 +1,9 @@
+        .add-margin-top{
+    margin-top: 15px;
+}
+
+.vertical-center{
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
