@@ -21,9 +21,7 @@ class db_access {
     }
 
     private function connectDB(){
-
-        //TODO: NOTE: username and PW removed for VC
-        //$db = new mysqli('localhost', USERNAME, PASSWORD, 'helvete');
+        $db = new mysqli('localhost', 'smk', 'refinnej8!', 'helvete');
         return $db;
     }
 
@@ -79,19 +77,22 @@ class db_access {
             // Get an array of product IDs associated with this transaction.
             $contains_product_ids = array_keys($contains);
             // For each product in this purchase, get the name, quantity and cost.
+            $counter = 0;
             foreach($contains_product_ids as $pid){
                 $current_product = $this->getProduct($pid);
                 $item_counts[$pid] = $contains[$pid];   // load the count of the product
                 $item_costs[$pid] = $current_product['unit_cost'];
                 $item_names[$pid] = $current_product['name'];
                 // Create an order with the current transaction information.
-                $current_order = Order::createOrderWithArrays($item_counts, $item_names, $item_costs);
-                $orders[] = $current_order;
+                //$this->errorLogger($current_order->formattedOrderString());
+                $counter++;
             }
+            $current_order = Order::createOrderWithArrays($item_counts, $item_names, $item_costs);
+            array_push($orders, $current_order);
         }
+        $this->errorLogger($counter);
         return $orders;
     }
-    // TODO: finish above method to get orders from database and display them on webpage.
 
     private function getProduct($id){
         $db = $this->connectDB();
@@ -101,7 +102,7 @@ class db_access {
         $stmt->execute();
         $stmt->store_result();
         $stmt->bind_result($cost, $name);
-
+        $stmt->fetch();
         $result = array('unit_cost' => $cost, 'name' => $name);
         return $result;
     }

@@ -8,5 +8,8 @@
         <li class="">
             <a id='shop' href="index.php?action=shop&class=shop">Shop</a>
         </li>
+        <li class="">
+            <a id='view_orders' href="index.php?action=viewAll&class=vieworders">View Orders</a>
+        </li>
 	</ul>
 </nav>

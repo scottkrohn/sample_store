@@ -64,6 +64,18 @@ class Order{
         return $this->item_names[$key];
     }
 
+    public function getAllItemNames(){
+        return $this->item_names;
+    }
+
+    public function getAllItemCosts(){
+        return $this->item_costs;
+    }
+
+    public function getAllItemCounts(){
+        return $this->item_counts;
+    }
+
     public function getOrderTime(){
         return $this->order_time;
     }
@@ -85,9 +97,9 @@ class Order{
     }
 
     public function formattedOrderString(){
-        $order_details = "";
+        $order_details = "Order Details:";
         foreach($this->getItemIDs() as $key){
-            $order_details .= $this->item_counts[$key].' '.$key.', ';
+            $order_details .= "\tItem ID: ".$key."\tItem Name: ".$this->item_names[$key]."\n";
         }
         $formatted_string = $this->getOrderTime()."\t".$order_details.$this->getTotalCost()."\n";
         return $formatted_string;

@@ -8,6 +8,7 @@
 
 require('controller/home_controller.php');
 require('controller/shop_controller.php');
+require('controller/vieworders_controller.php');
 
 if(isset($_POST['action'])){
     $action = $_POST['action'];
