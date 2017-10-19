@@ -40,5 +40,4 @@ $controller->$actionName();
 //TODO: Add Order to DB upon submit.
 //TODO: Add customer to DB upon order submit.
 //TODO: Ability to add new records to store.
-//TODO: List all customers
 
